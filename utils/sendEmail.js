@@ -1,28 +1,25 @@
 const nodemailer = require("nodemailer");
+const sendgridTransport=require("nodemailer-sendgrid-transport")
 
 const sendEmail = (options) => {
-  const transporter = nodemailer.createTransport({
-    service: process.env.EMAIL_SERVICE,
-    auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
 
-  const mailOptions = {
-    from: process.env.EMAIL_FROM,
-    to: options.to,
-    subject: options.subject,
-    html: options.text,
-  };
 
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(info);
+    const transport=nodemailer.createTransport(sendgridTransport({
+    auth:{
+        api_key:"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"
     }
-  });
+}))
+transport.sendMail({
+    to:options.to,
+    from:process.env.EMAIL_FROM,
+    subject:options.subject,
+    html:options.text,
+    
+})
+
+    
+
+  
 };
 
 module.exports = sendEmail;

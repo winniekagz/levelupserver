@@ -100,7 +100,7 @@ exports.forgotPassword = async (req, res, next) => {
   }
 };
 
-// @desc    Reset User Password
+
 exports.resetPassword = async (req, res, next) => {
   // Compare token in URL params to hashed token
   const resetPasswordToken = crypto
