@@ -1,7 +1,7 @@
 const crypto = require("crypto");
-const ErrorResponse = require("../utils/errorResponse");
-const User = require("../models/User");
-const sendEmail = require("../utils/sendEmail");
+const ErrorResponse = require("../utilis/errorResponse");
+const User = require("../Modelss/users");
+const sendEmail = require("../utilis/sendEmail");
 
 //    Login user
 exports.login = async (req, res, next) => {
