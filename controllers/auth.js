@@ -3,7 +3,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
 const sendEmail = require("../utils/sendEmail");
 
-// @desc    Login user
+//    Login user
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -33,7 +33,7 @@ exports.login = async (req, res, next) => {
   }
 };
 
-// @desc    Register user
+//    Register user
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
 
@@ -109,6 +109,7 @@ exports.resetPassword = async (req, res, next) => {
     .digest("hex");
 
   try {
+    // find  Token
     const user = await User.findOne({
       resetPasswordToken,
       resetPasswordExpire: { $gt: Date.now() },
