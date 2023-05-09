@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please add a password"],
     minlength: 6,
-    select:false
+  
   
   },
   confirm_password: {
@@ -54,7 +54,10 @@ UserSchema.pre("save", async function (next) {
 });
 // match password and ;hash password
 UserSchema.methods.comparePassword =  async function (password) {
+  console.log("password", password)
+  console.log("this.password", this.password)
   return await bcrypt.compare(password, this.password);
+
 };
 
 // get jwt token

@@ -1,7 +1,8 @@
 const Mailgen = require('mailgen');
 const nodemailer = require('nodemailer');
 
-const sendEmail = (options,url) => {
+const sendEmail = (user,url) => {
+    console.log("user ops",user)
 const config={
     service: 'gmail',
     auth: {
@@ -13,13 +14,15 @@ const config={
 var mailgenerator=new Mailgen({
     theme:'default',
     product:{
-        name:'levelUp'
+        name:'levelUp',
+        link:'https://levelup.com'
+
     }
 })
 
 var email={
     body:{
-        name:options.name,
+        name:user.name,
         intro:"How are you doing? Have you requested for a password reset?", 
         action:{
             instructions:"Please click the button below to reset your password",
@@ -31,13 +34,13 @@ var email={
         }
     }
 }
-
+    let mail = mailgenerator.generate(email);
   let transport=nodemailer.createTransport(config)
 transport.sendMail({
-    to:options.to,
+    to:user.email,
     from:process.env.EMAIL_FROM,
-    subject:options.subject,
-    html:options.text,
+    subject:"password reset",
+    html:mail,
     
 })
 
