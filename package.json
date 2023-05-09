@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server",
-    "start":"nodemon server.js",
+    "start": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -13,10 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "mailgen": "^2.0.27",
     "mongoose": "^5.11.9",
     "nodemailer": "^6.4.17",
     "nodemailer-sendgrid-transport": "^0.2.0"
